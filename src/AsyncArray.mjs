@@ -7,6 +7,3 @@ export class AsyncArray extends Array {
       }, Promise.resolve([])).then((rawArray) => new AsyncArray(...rawArray))
     }
   }
-  
-
-  
