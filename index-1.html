@@ -1,0 +1,50 @@
+<!-- <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Неизвестный </title></head><body>
+<h1 id="homework-5">Homework #5</h1>
+<p>```
+Вносите изменения в файлы:</p>
+<ul>
+<li>./src/AsyncArray.mjs</li>
+<li>./src/async.mjs
+```</li>
+</ul>
+<blockquote>
+<p>В данном домашнем задании нельзя использовать синтаксис <code>async/await</code>!</p>
+</blockquote>
+<h2 id="no1">Задание №1</h2>
+<p>Создайте и <strong>экспортируйте</strong> класс <code>AsyncArray</code> расширяющий обычный <code>Array</code>.
+Класс <code>AsyncArray</code> должен содержать один метод <code>serialMap()</code>. 
+Данный метод должен работать как обычный <code>map()</code>, но с учётом того, 
+что каждое преобразование элемента массива происходит асинхронно, 
+т.е. функция-преобразователь будет возвращать <code>Promise</code>. 
+Следовательно, результатом <code>serialMap()</code> тоже должен быть <code>Promise</code> с новым экземпляром <code>AsyncArray</code> содержащим результаты всех асинхронных преобразований.
+Каждое следующее преобразование должно запускаться только после того, как завершилось предыдущее.</p>
+<h4 id="_1">Пример:</h4>
+<p>```javascript
+import {AsyncArray} from './AsyncArray.mjs';</p>
+<p>const asyncTransformation = (el, index, asyncArray) =&gt; new Promise((resolve, reject) =&gt; {
+    // любое асинхронное преобразование
+});
+const asyncArray = new AsyncArray(1, 2, 3);</p>
+<p>asyncArray.serialMap(asyncTransformation).then(result =&gt; {
+    // result - экземпляр AsyncArray с результатами преобразований
+});
+
+
+```</p>
+<h2 id="no2">Задание №2</h2>
+<p>Создайте и <strong>экспортируйте</strong> функцию <code>_async()</code>.
+Задача данной функции создавать самодельные асинхронные функции на основе функций-генераторов.</p>
+<p>Если оригинальный синтаксис создания асинхронной функции выглядит так:
+<code>javascript
+async function testFunction(a, b) {
+    return (await someAsyncAction(a)) + (await oneMoreAsyncAction(b));
+}</code>
+то аналогичный самодельный вариант будет выглядеть так:
+```javascript
+import {_async} from './async.mjs';</p>
+<p>const testFunction = _async(function* (a, b) {
+    return (yield someAsyncAction(a)) + (yield oneMoreAsyncAction(b));
+});
+<code>``
+Самодельный вариант функции</code>testFunction` по принципу работы и результату не должен отличаться от оригинального.</p>
+</body></html> -->
