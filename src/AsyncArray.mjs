@@ -1,12 +1,13 @@
 export class AsyncArray extends Array {
 
     serialMap(fn) {
-        return this.reduce((promis, el, id) => {
-            return promis.then(newArr => {
-                return fn(el, id, this).then(newEl => {
-                    return [...newArr, newEl];
-                })
-            })
-        }, Promise.resolve([])).then((newArr) => new AsyncArray(...newArr));
+        return this.reduce((acc, el, id) => {
+            return acc.then(result => {
+                return fn(el, id, this).then(transformResult => {
+                    result[id] = transformResult;
+                    return result;
+                });
+            });
+        }, Promise.resolve(new AsyncArray(this.length)));
     }
 }
